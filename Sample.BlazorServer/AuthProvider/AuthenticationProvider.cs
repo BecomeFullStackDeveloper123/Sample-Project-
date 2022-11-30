@@ -39,6 +39,12 @@ namespace Sample.BlazorServer.AuthProvider
             var authState = Task.FromResult(new AuthenticationState(user));
             NotifyAuthenticationStateChanged(authState);
         }
+        public async Task LoggedOut()
+        {
+            var user = new ClaimsPrincipal(new ClaimsIdentity());
+            var authState = Task.FromResult(new AuthenticationState(user));
+            NotifyAuthenticationStateChanged(authState);
+        }
 
     }
 }

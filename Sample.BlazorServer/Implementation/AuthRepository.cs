@@ -46,6 +46,14 @@ namespace Sample.BlazorServer.Implementation
 
         }
 
+        public async Task Logout()
+        {
+            await _localStorageService.RemoveItemAsync("AuthJwtToken");
+            // Change auth state of app
+            await ((AuthenticationProvider)_authenticationProvider).LoggedOut();
+           
+        }
+
         public async Task<bool> Register(UserDto dto)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, StaticEndpoints.AuthRegisterEndpoint)
