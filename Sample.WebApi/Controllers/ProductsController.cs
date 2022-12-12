@@ -73,7 +73,7 @@ namespace Sample.WebApi.Controllers
         // POST api/<ProductsController>
         [HttpPost]
         [Route("AddProduct")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize]
         public async Task<ActionResult<ProductDTO>> Post(ProductDTO productDTO)
         {
             try

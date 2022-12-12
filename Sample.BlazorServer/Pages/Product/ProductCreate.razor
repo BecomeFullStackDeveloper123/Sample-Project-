@@ -1,0 +1,51 @@
+﻿@page "/Product/Create"
+@using Sample.BlazorServer.Endpoints
+@inject IProductRepository _productRepo
+@inject NavigationManager _Nav
+<h1>Create Product</h1>
+@if (IsSuccess==false)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+       <strong>Something went wrong!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<EditForm Model="productDTO" OnValidSubmit="HandleProductCreate">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Product Name</label>
+        <input type="text" class="form-control" @bind-value="productDTO.ProductName">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Product Price</label>
+        <input type="number" class="form-control" @bind-value="productDTO.ProductPrice">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Product Category</label>
+        <input type="text" class="form-control" @bind-value="productDTO.ProductCategory">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Product Description</label>
+        <input type="text" class="form-control" @bind-value="productDTO.ProductDescription">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+@code {
+    private  ProductDTO productDTO = new ProductDTO();
+    private bool IsSuccess = true;
+    protected async Task HandleProductCreate()
+    {
+        IsSuccess = false;
+        string apiUrl = StaticEndpoints.AddProductEndpoint;
+        productDTO.EntryDate = DateTime.Now;
+        productDTO.ProductImage = "";
+        IsSuccess = await _productRepo.Create(apiUrl, productDTO);
+        if (IsSuccess)
+        {
+            _Nav.NavigateTo("/Product/List");
+        }
+    }
+}
