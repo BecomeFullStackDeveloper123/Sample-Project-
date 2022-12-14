@@ -9,5 +9,6 @@
         public static string GetSingleProductsEndpoint = $"{BaseUrl}api/Products/";
         public static string AddProductEndpoint = $"{BaseUrl}api/Products/AddProduct";
         public static string EditProductEndpoint = $"{BaseUrl}api/Products/";
+        public static string DeleteProductEndpoint = $"{BaseUrl}api/Products/";
     }
 }
