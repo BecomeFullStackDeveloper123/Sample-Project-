@@ -17,6 +17,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddTransient<IAuthRepository, AuthRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddTransient<IUpload, Upload>();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<AuthenticationProvider>();
 builder.Services.AddScoped<AuthenticationStateProvider>(p =>

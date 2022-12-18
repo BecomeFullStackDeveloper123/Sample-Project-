@@ -8,8 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
+    <PackageReference Include="BlazorInputFile" Version="0.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>
